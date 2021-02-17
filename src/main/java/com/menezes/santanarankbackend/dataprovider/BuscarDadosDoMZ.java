@@ -39,7 +39,7 @@ public class BuscarDadosDoMZ {
     List<Match> matches = new ArrayList<>();
 
 
-    @Scheduled(cron = "1 * * * * ?")
+    @Scheduled(cron = "* * 1 * * ?")
     public void buscarDadosDoMZ() throws ParserConfigurationException, IOException, SAXException {
         DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
         DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
