@@ -34,13 +34,20 @@ public class BuscarDadosDoMZ {
     @Autowired
     TeamService teamService;
 
-    final String uri = "http://www.managerzone.com/xml/team_matchlist.php?sport_id=1&team_id=1171006&match_status=1&limit=100";
-
-    List<Match> matches = new ArrayList<>();
 
 
     @Scheduled(cron = "* * 1 * * ?")
-    public void buscarDadosDoMZ() throws ParserConfigurationException, IOException, SAXException {
+    public void buscarDadosParaCadaTime() throws IOException, SAXException, ParserConfigurationException {
+        //SEDS
+        buscarDadosDoMZ("http://www.managerzone.com/xml/team_matchlist.php?sport_id=1&team_id=1171006&match_status=1&limit=100");
+        //ATMS
+        buscarDadosDoMZ("http://www.managerzone.com/xml/team_matchlist.php?sport_id=1&team_id=1167818&match_status=1&limit=100");
+        //CGF
+        buscarDadosDoMZ("http://www.managerzone.com/xml/team_matchlist.php?sport_id=1&team_id=1171006&match_status=1&limit=100");
+    }
+
+    public void buscarDadosDoMZ(String uri) throws ParserConfigurationException, IOException, SAXException {
+        List<Match> matches = new ArrayList<>();
         DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
         DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
         Document doc = dBuilder.parse(uri);
