@@ -36,7 +36,7 @@ public class BuscarDadosDoMZ {
 
 
 
-    @Scheduled(cron = "40 00 * * * ?")
+    @Scheduled(cron = "* 45 00 * * ?")
     public void buscarDadosParaCadaTime() throws IOException, SAXException, ParserConfigurationException {
         //SEDS
         buscarDadosDoMZ("http://www.managerzone.com/xml/team_matchlist.php?sport_id=1&team_id=1171006&match_status=1&limit=100");
